@@ -25,10 +25,13 @@ function 解包<A>(a: Effect<A>): _Effect<A> {
 
 // 实现类型类
 Functor.增加实现(function (f, a) {
-  if (a instanceof _Effect) return mapEffect(f, a as any)
-  return Functor.NEXT
+  if (!(a instanceof _Effect)) return Functor.NEXT
+  return mapEffect(f, a as any)
 })
-Apply.增加实现(function (ff, fa) {})
+Apply.增加实现(function (ff, fa) {
+  if (!(fa instanceof _Effect && ff instanceof _Effect)) return Apply.NEXT
+  return applyEffect(ff as any, fa as any)
+})
 
 // 构造子
 export function Effect<A>(a: () => A): Effect<A> {
@@ -41,4 +44,7 @@ export function runEffect<A>(a: Effect<A>): A {
 }
 export function mapEffect<A, B>(f: (a: A) => B, a: Effect<A>): Effect<B> {
   return Effect(() => f(解包(a).value()))
+}
+export function applyEffect<A, B>(ff: Effect<(a: A) => B>, fa: Effect<A>): Effect<B> {
+  return Effect(() => 解包(ff).value()(解包(fa).value()))
 }
