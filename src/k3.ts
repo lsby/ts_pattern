@@ -1,6 +1,6 @@
 import { error, 联合转元组 } from '@lsby/ts_type_fun'
 
-export type 三阶类型<A1, A2, A3> = {}
+export interface 三阶类型<A1, A2, A3> {}
 
 export type 构造三阶类型<构造子, 参数1, 参数2, 参数3> = 构造子 extends keyof 三阶类型<any, any, any>
   ? 三阶类型<参数1, 参数2, 参数3>[构造子]

@@ -1,8 +1,6 @@
 import { error, 联合转元组 } from '@lsby/ts_type_fun'
 
-export type 二阶类型<A1, A2> = {
-  Funtion: (a: A1) => A2
-}
+export interface 二阶类型<A1, A2> {}
 
 export type 构造二阶类型<构造子, 参数1, 参数2> = 构造子 extends keyof 二阶类型<any, any>
   ? 二阶类型<参数1, 参数2>[构造子]

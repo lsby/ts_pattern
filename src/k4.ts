@@ -1,6 +1,6 @@
 import { error, 联合转元组 } from '@lsby/ts_type_fun'
 
-export type 四阶类型<A1, A2, A3, A4> = {}
+export interface 四阶类型<A1, A2, A3, A4> {}
 
 export type 构造四阶类型<构造子, 参数1, 参数2, 参数3, 参数4> = 构造子 extends keyof 四阶类型<any, any, any, any>
   ? 四阶类型<参数1, 参数2, 参数3, 参数4>[构造子]
