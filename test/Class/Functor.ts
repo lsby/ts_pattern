@@ -4,7 +4,7 @@ import { 取二阶类型参数1, 取二阶类型参数2 } from '../../src/k2'
 
 var 实现: any[] = []
 export var NEXT = Symbol('NEXT')
-export function 增加实现(ff: (f: any, a: any) => any) {
+export function 增加实现(ff: (...args: any[]) => any) {
   实现.push(ff)
 }
 

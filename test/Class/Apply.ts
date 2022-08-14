@@ -1,10 +1,10 @@
-import { EQ, CASE, CHECK } from '../../src/Base'
+import { CHECK, EQ } from '../../src/Base'
 import { 取一阶类型参数1, 取一阶类型构造子, 构造一阶类型 } from '../../src/k1'
-import { 取二阶类型参数1, 取二阶类型参数2, 构造二阶类型 } from '../../src/k2'
+import { 取二阶类型参数1, 取二阶类型参数2 } from '../../src/k2'
 
 var 实现: any[] = []
 export var NEXT = Symbol('NEXT')
-export function 增加实现(ff: (f: any, a: any) => any) {
+export function 增加实现(ff: (...args: any[]) => any) {
   实现.push(ff)
 }
 

@@ -1,6 +1,7 @@
 import { TYPE } from './Base/Type'
 import * as Functor from './Class/Functor'
 import * as Apply from './Class/Apply'
+import * as Monad from './Class/Monad'
 
 // 类型定义
 export type Effect<A> = { [TYPE]: 'Effect' }
@@ -32,6 +33,10 @@ Apply.增加实现(function (ff, fa) {
   if (!(fa instanceof _Effect && ff instanceof _Effect)) return Apply.NEXT
   return applyEffect(ff as any, fa as any)
 })
+Monad.增加实现(function (a, f) {
+  if (!(a instanceof _Effect)) return Monad.NEXT
+  return bindEffect(a as any, f)
+})
 
 // 构造子
 export function Effect<A>(a: () => A): Effect<A> {
@@ -47,4 +52,7 @@ export function mapEffect<A, B>(f: (a: A) => B, a: Effect<A>): Effect<B> {
 }
 export function applyEffect<A, B>(ff: Effect<(a: A) => B>, fa: Effect<A>): Effect<B> {
   return Effect(() => 解包(ff).value()(解包(fa).value()))
+}
+export function bindEffect<A, B>(a: Effect<A>, f: (a: A) => Effect<B>): Effect<B> {
+  return f(解包(a).value())
 }
