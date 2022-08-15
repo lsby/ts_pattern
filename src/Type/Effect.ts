@@ -37,7 +37,7 @@ export function bindEffect<A, B>(a: Effect<A>, f: (a: A) => Effect<B>): Effect<B
 // Functor
 declare module '../Class/Functor' {
   interface Functor<A> {
-    Effect的实现: typeof 构造子 extends keyof A ? (A[typeof 构造子] extends 'Effect' ? true : false) : false
+    Effect的实现: typeof 类型 extends keyof A ? (A[typeof 类型] extends 'Effect' ? true : false) : false
   }
 }
 Functor.增加实现(function (f, a) {
@@ -48,7 +48,7 @@ Functor.增加实现(function (f, a) {
 // Apply
 declare module '../Class/Apply' {
   interface Apply<A> {
-    Effect的实现: typeof 构造子 extends keyof A ? (A[typeof 构造子] extends 'Effect' ? true : false) : false
+    Effect的实现: typeof 类型 extends keyof A ? (A[typeof 类型] extends 'Effect' ? true : false) : false
   }
 }
 Apply.增加实现(function (ff, fa) {
@@ -59,7 +59,7 @@ Apply.增加实现(function (ff, fa) {
 // Monad
 declare module '../Class/Monad' {
   interface Monad<A> {
-    Effect的实现: typeof 构造子 extends keyof A ? (A[typeof 构造子] extends 'Effect' ? true : false) : false
+    Effect的实现: typeof 类型 extends keyof A ? (A[typeof 类型] extends 'Effect' ? true : false) : false
   }
 }
 Monad.增加实现(function (a, f) {
@@ -70,7 +70,7 @@ Monad.增加实现(function (a, f) {
 // Show
 declare module '../Class/Show' {
   interface Show<A> {
-    Effect的实现: typeof 构造子 extends keyof A ? (A[typeof 构造子] extends 'Effect' ? true : false) : false
+    Effect的实现: typeof 类型 extends keyof A ? (A[typeof 类型] extends 'Effect' ? true : false) : false
   }
 }
 Show.增加实现(function (a) {
