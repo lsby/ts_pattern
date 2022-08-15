@@ -33,8 +33,8 @@ export function map<
   FA_Check = Check<[Eq<A1, A2>, IsFunctor<FA>], FA>,
 >(f: AB, a: FA): FB {
   for (var 实现 of 实现们) {
-    var r = (实现 as any)(f, a)
-    if (r != NEXT) return r as any
+    var r = 实现(f, a)
+    if (r != NEXT) return r
   }
   throw new Error('没有找到实现')
 }

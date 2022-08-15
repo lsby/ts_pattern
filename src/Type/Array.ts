@@ -48,7 +48,7 @@ declare module '../Class/Functor' {
 }
 Functor.增加实现(function <A, B>(f: (a: A) => B, a: List<A>): List<B> {
   if (a[类型] != 'List') return Functor.NEXT
-  return mapList(f, a as any)
+  return mapList(f, a)
 })
 
 // Apply
@@ -59,7 +59,7 @@ declare module '../Class/Apply' {
 }
 Apply.增加实现(function <A, B>(ff: List<(a: A) => B>, fa: List<A>): List<B> {
   if (ff[类型] != 'List' || fa[类型] != 'List') return Apply.NEXT
-  return applyList(ff as any, fa as any)
+  return applyList(ff, fa)
 })
 
 // Monad
@@ -70,7 +70,7 @@ declare module '../Class/Monad' {
 }
 Monad.增加实现(function <A, B>(a: List<A>, f: (a: A) => List<B>): List<B> {
   if (a[类型] != 'List') return Monad.NEXT
-  return bindList(a as any, f)
+  return bindList(a, f)
 })
 
 // Show

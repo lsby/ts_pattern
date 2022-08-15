@@ -42,7 +42,7 @@ declare module '../Class/Functor' {
 }
 Functor.增加实现(function <A, B>(f: (a: A) => B, a: Effect<A>): Effect<B> {
   if (a[类型] != 'Effect') return Functor.NEXT
-  return mapEffect(f, a as any)
+  return mapEffect(f, a)
 })
 
 // Apply
@@ -53,7 +53,7 @@ declare module '../Class/Apply' {
 }
 Apply.增加实现(function <A, B>(ff: Effect<(a: A) => B>, fa: Effect<A>): Effect<B> {
   if (ff[类型] != 'Effect' || fa[类型] != 'Effect') return Apply.NEXT
-  return applyEffect(ff as any, fa as any)
+  return applyEffect(ff, fa)
 })
 
 // Monad
@@ -64,7 +64,7 @@ declare module '../Class/Monad' {
 }
 Monad.增加实现(function <A, B>(a: Effect<A>, f: (a: A) => Effect<B>): Effect<B> {
   if (a[类型] != 'Effect') return Monad.NEXT
-  return bindEffect(a as any, f)
+  return bindEffect(a, f)
 })
 
 // Show
