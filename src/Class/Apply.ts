@@ -17,7 +17,7 @@ type _IsApply<A, keys> = keys extends []
 export type IsApply<A> = _IsApply<A, 联合转元组<keyof Apply<A>>>
 
 var 实现们: any[] = []
-export var NEXT = Symbol('NEXT')
+export var NEXT: any = Symbol('NEXT')
 export function 增加实现(f: (...args: any[]) => any) {
   实现们.push(f)
 }

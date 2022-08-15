@@ -3,8 +3,13 @@ import { 取一阶类型参数1 } from '../src/Base/K1'
 import { apply } from '../src/Class/Apply'
 import { IsFunctor, map } from '../src/Class/Functor'
 import { bind } from '../src/Class/Monad'
+import { List, toArray } from '../src/Type/Array'
 import { Effect, runEffect } from '../src/Type/Effect'
 import { fromMaybe, Just, Maybe } from '../src/Type/Maybe'
+
+function eq(a: any, b: any) {
+  return JSON.stringify(a) == JSON.stringify(b)
+}
 
 function Effect测试() {
   var effect_data = Effect(() => 1)
@@ -37,3 +42,30 @@ function Maybe测试() {
   console.log(fromMaybe(Maybe_monad, 0) == 2)
 }
 Maybe测试()
+
+function List测试() {
+  var List_data = List([1, 2, 3])
+
+  var List_map = map((a: number) => a + 1, List_data)
+  var List_apply = apply(List([(a: number) => a + 1]), List_data)
+  var List_monad = bind(List_data, (a: number) => List([a + 1]))
+  var List_monad2 = bind(List([1, 2, 3]), (a: number) => bind(List([2, 3, 4]), (b: number) => List([[a, b]])))
+
+  console.log(eq(toArray(List_map), [2, 3, 4]))
+  console.log(eq(toArray(List_apply), [2, 3, 4]))
+  console.log(eq(toArray(List_monad), [2, 3, 4]))
+  console.log(
+    eq(toArray(List_monad2), [
+      [1, 2],
+      [1, 3],
+      [1, 4],
+      [2, 2],
+      [2, 3],
+      [2, 4],
+      [3, 2],
+      [3, 3],
+      [3, 4],
+    ]),
+  )
+}
+List测试()

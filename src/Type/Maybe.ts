@@ -55,9 +55,9 @@ declare module '../Class/Functor' {
     Maybe的实现: typeof 类型 extends keyof A ? (A[typeof 类型] extends 'Maybe' ? true : false) : false
   }
 }
-Functor.增加实现(function (f, a) {
+Functor.增加实现(function <A, B>(f: (a: A) => B, a: Maybe<A>): Maybe<B> {
   if (a[类型] != 'Maybe') return Functor.NEXT
-  return mapMaybe(f, a as any)
+  return mapMaybe(f, a)
 })
 
 // Apply
@@ -66,9 +66,9 @@ declare module '../Class/Apply' {
     Maybe的实现: typeof 类型 extends keyof A ? (A[typeof 类型] extends 'Maybe' ? true : false) : false
   }
 }
-Apply.增加实现(function (ff, fa) {
+Apply.增加实现(function <A, B>(ff: Maybe<(a: A) => B>, fa: Maybe<A>): Maybe<B> {
   if (ff[类型] != 'Maybe' || fa[类型] != 'Maybe') return Apply.NEXT
-  return applyMaybe(ff as any, fa as any)
+  return applyMaybe(ff, fa)
 })
 
 // Monad
@@ -77,9 +77,9 @@ declare module '../Class/Monad' {
     Maybe的实现: typeof 类型 extends keyof A ? (A[typeof 类型] extends 'Maybe' ? true : false) : false
   }
 }
-Monad.增加实现(function (a, f) {
+Monad.增加实现(function <A, B>(a: Maybe<A>, f: (a: A) => Maybe<B>): Maybe<B> {
   if (a[类型] != 'Maybe') return Monad.NEXT
-  return bindMaybe(a as any, f)
+  return bindMaybe(a, f)
 })
 
 // Show
@@ -88,7 +88,8 @@ declare module '../Class/Show' {
     Maybe的实现: typeof 类型 extends keyof A ? (A[typeof 类型] extends 'Maybe' ? true : false) : false
   }
 }
-Show.增加实现(function (a) {
+Show.增加实现(function <A>(a: Maybe<A>): string {
   if (a[类型] != 'Maybe') return Show.NEXT
-  return 'Maybe'
+  if (a[构造子] == 'Nothing') return 'Nothing'
+  return `(Just ${a[参数].value})`
 })

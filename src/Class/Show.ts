@@ -15,12 +15,12 @@ type _IsShow<A, keys> = keys extends []
 export type IsShow<A> = _IsShow<A, 联合转元组<keyof Show<A>>>
 
 var 实现们: any[] = []
-export var NEXT = Symbol('NEXT')
+export var NEXT: any = Symbol('NEXT')
 export function 增加实现(f: (...args: any[]) => any) {
   实现们.push(f)
 }
 
-export function show<A extends A_Check, A_Check = Check<[IsShow<A>], A>>(a: A): String {
+export function show<A extends A_Check, A_Check = Check<[IsShow<A>], A>>(a: A): string {
   for (var 实现 of 实现们) {
     var r = (实现 as any)(a)
     if (r != NEXT) return r as any

@@ -40,7 +40,7 @@ declare module '../Class/Functor' {
     Effect的实现: typeof 类型 extends keyof A ? (A[typeof 类型] extends 'Effect' ? true : false) : false
   }
 }
-Functor.增加实现(function (f, a) {
+Functor.增加实现(function <A, B>(f: (a: A) => B, a: Effect<A>): Effect<B> {
   if (a[类型] != 'Effect') return Functor.NEXT
   return mapEffect(f, a as any)
 })
@@ -51,7 +51,7 @@ declare module '../Class/Apply' {
     Effect的实现: typeof 类型 extends keyof A ? (A[typeof 类型] extends 'Effect' ? true : false) : false
   }
 }
-Apply.增加实现(function (ff, fa) {
+Apply.增加实现(function <A, B>(ff: Effect<(a: A) => B>, fa: Effect<A>): Effect<B> {
   if (ff[类型] != 'Effect' || fa[类型] != 'Effect') return Apply.NEXT
   return applyEffect(ff as any, fa as any)
 })
@@ -62,7 +62,7 @@ declare module '../Class/Monad' {
     Effect的实现: typeof 类型 extends keyof A ? (A[typeof 类型] extends 'Effect' ? true : false) : false
   }
 }
-Monad.增加实现(function (a, f) {
+Monad.增加实现(function <A, B>(a: Effect<A>, f: (a: A) => Effect<B>): Effect<B> {
   if (a[类型] != 'Effect') return Monad.NEXT
   return bindEffect(a as any, f)
 })
@@ -73,7 +73,7 @@ declare module '../Class/Show' {
     Effect的实现: typeof 类型 extends keyof A ? (A[typeof 类型] extends 'Effect' ? true : false) : false
   }
 }
-Show.增加实现(function (a) {
+Show.增加实现(function <A>(a: Effect<A>): string {
   if (a[类型] != 'Effect') return Show.NEXT
   return 'Effect'
 })
