@@ -36,7 +36,7 @@ export function apply<
   FA_Check = Check<[Eq<F1, F2>, Eq<A1, A2>, IsApply<FA>, IsApply<FAB>], FA>,
 >(f: FAB, a: FA): FB {
   for (var 实现 of 实现们) {
-    var r = 实现(f, a)
+    var r = 实现(...arguments)
     if (r != NEXT) return r
   }
   throw new Error('没有找到实现')

@@ -5,7 +5,9 @@ import { IsFunctor, map } from '../src/Class/Functor'
 import { bind } from '../src/Class/Monad'
 import { List, toArray } from '../src/Type/Array'
 import { Effect, runEffect } from '../src/Type/Effect'
+import { addFlowNode, Flow, runFlow } from '../src/Type/Flow'
 import { fromMaybe, Just, Maybe } from '../src/Type/Maybe'
+import '../src/TypeEx/Function'
 
 function eq(a: any, b: any) {
   return JSON.stringify(a) == JSON.stringify(b)
@@ -69,3 +71,16 @@ function List测试() {
   )
 }
 List测试()
+
+function Flow测试() {
+  var f1 = Flow((a: number) => a + 1)
+  var f2 = addFlowNode((a: number) => a + 1, f1)
+  var f3 = addFlowNode(
+    Flow((a: number) => a + 1),
+    f1,
+  )
+
+  console.log(eq(runFlow(1, f2), 3))
+  console.log(eq(runFlow(1, f3), 3))
+}
+Flow测试()

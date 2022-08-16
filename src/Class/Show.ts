@@ -22,7 +22,7 @@ export function 增加实现(f: (...args: any[]) => any) {
 
 export function show<A extends A_Check, A_Check = Check<[IsShow<A>], A>>(a: A): string {
   for (var 实现 of 实现们) {
-    var r = 实现(a)
+    var r = 实现(...arguments)
     if (r != NEXT) return r
   }
   throw new Error('没有找到实现')

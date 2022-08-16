@@ -34,7 +34,7 @@ export function bind<
   MA_Check = Check<[Eq<A1, A2>, Eq<M1, M2>, IsMonad<MA>], MA>,
 >(a: MA, f: AMB): MB {
   for (var 实现 of 实现们) {
-    var r = 实现(a, f)
+    var r = 实现(...arguments)
     if (r != NEXT) return r
   }
   throw new Error('没有找到实现')
