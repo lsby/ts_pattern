@@ -1,5 +1,6 @@
 import { error, 联合转元组 } from '@lsby/ts_type_fun'
-import { Check, Eq } from '../Base/Check'
+import { Check } from '../Base/Check'
+import { Eq } from '../Base/Eq'
 import { 取一阶类型参数1, 取一阶类型构造子, 构造一阶类型 } from '../Base/K1'
 import { 取二阶类型参数1, 取二阶类型参数2 } from '../Base/K2'
 
