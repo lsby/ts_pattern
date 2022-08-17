@@ -14,7 +14,7 @@ export function Flow<
   B = 取二阶类型参数2<AB>,
   AB_Check = Check<[IsMapFunc<AB>], AB>,
 >(a: AB): Flow<A, B> {
-  return { [类型]: 'Flow', [构造子]: 'Flow', [参数]: { value: a } }
+  return { [类型]: 'Flow' as 'Flow', [构造子]: 'Flow' as 'Flow', [参数]: { value: a } }
 }
 
 // 扩充推导定义

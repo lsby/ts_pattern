@@ -9,7 +9,7 @@ export type Effect<A> = { [类型]: 'Effect'; [构造子]: 'Effect'; [参数]: {
 
 // 构造子
 export function Effect<A>(a: () => A): Effect<A> {
-  return { [类型]: 'Effect', [构造子]: 'Effect', [参数]: { value: a } }
+  return { [类型]: 'Effect' as 'Effect', [构造子]: 'Effect' as 'Effect', [参数]: { value: a } }
 }
 
 // 扩充推导定义

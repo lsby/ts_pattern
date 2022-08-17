@@ -24,7 +24,7 @@ export function Fold<
   B2 = 取二阶类型参数2<AB>,
   _Check = Check<[Eq<B1, B2>, IsSeq<A_Seq>, IsMapFunc<BAB>, IsMapFunc<AB>], BAB>,
 >(f: BAB, defValue: B1, arr: A_Seq): Fold<A, B1> {
-  return { [类型]: 'Fold', [构造子]: 'Fold', [参数]: { f: f as any, defValue, arr } }
+  return { [类型]: 'Fold' as 'Fold', [构造子]: 'Fold' as 'Fold', [参数]: { f: f as any, defValue, arr } }
 }
 
 // 扩充推导定义

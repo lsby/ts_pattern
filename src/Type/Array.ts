@@ -10,7 +10,7 @@ export type List<A> = { [类型]: 'List'; [构造子]: 'List'; [参数]: { value
 
 // 构造子
 export function List<A>(a: A[]): List<A> {
-  return { [类型]: 'List', [构造子]: 'List', [参数]: { value: a } }
+  return { [类型]: 'List' as 'List', [构造子]: 'List' as 'List', [参数]: { value: a } }
 }
 
 // 扩充推导定义

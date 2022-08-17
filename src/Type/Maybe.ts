@@ -11,10 +11,10 @@ export type Maybe<A> =
 
 // 构造子
 export function Just<A>(a: A): Maybe<A> {
-  return { [类型]: 'Maybe', [构造子]: 'Just', [参数]: { value: a } }
+  return { [类型]: 'Maybe' as 'Maybe', [构造子]: 'Just' as 'Just', [参数]: { value: a } }
 }
 export function Nothing<A>(): Maybe<A> {
-  return { [类型]: 'Maybe', [构造子]: 'Nothing', [参数]: { value: null as any } }
+  return { [类型]: 'Maybe' as 'Maybe', [构造子]: 'Nothing' as 'Nothing', [参数]: { value: null as any } }
 }
 
 // 扩充推导定义
