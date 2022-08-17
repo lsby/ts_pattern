@@ -9,6 +9,7 @@ import { addFlowNode, Flow, runFlow } from '../src/Type/Flow'
 import { Fold, runFoldLeft } from '../src/Type/Fold'
 import { fromMaybe, Just, Maybe } from '../src/Type/Maybe'
 import '../src/TypeEx/Function'
+import '../src/TypeEx/Array'
 
 function eq(a: any, b: any) {
   return JSON.stringify(a) == JSON.stringify(b)
@@ -93,8 +94,10 @@ function Flow测试() {
 Flow测试()
 
 function Fold测试() {
-  var f1 = Fold((a: number) => a + 1, 0, [1, 2, 3])
+  var f1 = Fold((s: number) => (a: number) => s + a, 0, List([1, 2, 3]))
+  var f2 = Fold((s: number) => (a: number) => s + a, 0, [1, 2, 3])
 
-  console.log(runFoldLeft(f1))
+  console.log(eq(runFoldLeft(f1), 6))
+  console.log(eq(runFoldLeft(f2), 6))
 }
 Fold测试()

@@ -3,6 +3,7 @@ import * as Functor from '../Class/Functor'
 import * as Apply from '../Class/Apply'
 import * as Monad from '../Class/Monad'
 import * as Show from '../Class/Show'
+import * as Seq from '../Class/Seq'
 
 // 类型定义
 export type List<A> = { [类型]: 'List'; [构造子]: 'List'; [参数]: { value: A[] } }
@@ -82,4 +83,15 @@ declare module '../Class/Show' {
 Show.增加实现(function <A>(a: List<A>): string {
   if (a[类型] != 'List') return Show.NEXT
   return JSON.stringify(a[参数].value)
+})
+
+// Seq
+declare module '../Class/Seq' {
+  interface Seq<A> {
+    List的实现: typeof 类型 extends keyof A ? (A[typeof 类型] extends 'List' ? true : false) : false
+  }
+}
+Seq.增加实现(function <A>(a: List<A>): Array<A> {
+  if (a[类型] != 'List') return Seq.NEXT
+  return toArray(a)
 })
