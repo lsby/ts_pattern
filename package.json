@@ -1,11 +1,12 @@
 {
-  "name": "ts_struct",
-  "version": "1.0.0",
+  "name": "@lsby/ts_struct",
+  "version": "0.0.1",
   "description": "",
   "main": "index.js",
   "scripts": {
     "watch:ts": "tsc -w",
-    "test": "node dist/test/index.js"
+    "test": "node dist/test/index.js",
+    "pub": "npm publish --access=public"
   },
   "author": "",
   "license": "GPL-3.0-or-later",
