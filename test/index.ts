@@ -104,3 +104,5 @@ function Fold测试() {
   断言相等(runFoldLeft(f3), 6)
 }
 Fold测试()
+
+console.log('全部测试通过')
