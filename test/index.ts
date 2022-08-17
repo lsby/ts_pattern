@@ -11,8 +11,9 @@ import { fromMaybe, Just, Maybe } from '../src/Type/Maybe'
 import '../src/TypeEx/Function'
 import '../src/TypeEx/Array'
 
-function eq(a: any, b: any) {
-  return JSON.stringify(a) == JSON.stringify(b)
+function 断言相等(a: any, b: any) {
+  if (JSON.stringify(a) == JSON.stringify(b)) return
+  throw new Error(`${JSON.stringify(a)} 不等于 ${JSON.stringify(b)}`)
 }
 
 function Effect测试() {
@@ -25,9 +26,9 @@ function Effect测试() {
   )
   var effect_monad = bind(effect_data, (a: number) => Effect(() => a + 1))
 
-  console.log(runEffect(effect_map) == 2)
-  console.log(runEffect(effect_apply) == 2)
-  console.log(runEffect(effect_monad) == 2)
+  断言相等(runEffect(effect_map), 2)
+  断言相等(runEffect(effect_apply), 2)
+  断言相等(runEffect(effect_monad), 2)
 }
 Effect测试()
 
@@ -41,9 +42,9 @@ function Maybe测试() {
   )
   var Maybe_monad = bind(Maybe_data, (a: number) => Just(a + 1))
 
-  console.log(fromMaybe(Maybe_map, 0) == 2)
-  console.log(fromMaybe(Maybe_apply, 0) == 2)
-  console.log(fromMaybe(Maybe_monad, 0) == 2)
+  断言相等(fromMaybe(Maybe_map, 0), 2)
+  断言相等(fromMaybe(Maybe_apply, 0), 2)
+  断言相等(fromMaybe(Maybe_monad, 0), 2)
 }
 Maybe测试()
 
@@ -55,22 +56,20 @@ function List测试() {
   var List_monad = bind(List_data, (a: number) => List([a + 1]))
   var List_monad2 = bind(List([1, 2, 3]), (a: number) => bind(List([2, 3, 4]), (b: number) => List([[a, b]])))
 
-  console.log(eq(toArray(List_map), [2, 3, 4]))
-  console.log(eq(toArray(List_apply), [2, 3, 4]))
-  console.log(eq(toArray(List_monad), [2, 3, 4]))
-  console.log(
-    eq(toArray(List_monad2), [
-      [1, 2],
-      [1, 3],
-      [1, 4],
-      [2, 2],
-      [2, 3],
-      [2, 4],
-      [3, 2],
-      [3, 3],
-      [3, 4],
-    ]),
-  )
+  断言相等(toArray(List_map), [2, 3, 4])
+  断言相等(toArray(List_apply), [2, 3, 4])
+  断言相等(toArray(List_monad), [2, 3, 4])
+  断言相等(toArray(List_monad2), [
+    [1, 2],
+    [1, 3],
+    [1, 4],
+    [2, 2],
+    [2, 3],
+    [2, 4],
+    [3, 2],
+    [3, 3],
+    [3, 4],
+  ])
 }
 List测试()
 
@@ -87,9 +86,9 @@ function Flow测试() {
     fx1,
   )
 
-  console.log(eq(runFlow(1, f2), 3))
-  console.log(eq(runFlow(1, f3), 3))
-  console.log(eq(runFlow(1, fx2), 3))
+  断言相等(runFlow(1, f2), 3)
+  断言相等(runFlow(1, f3), 3)
+  断言相等(runFlow(1, fx2), 3)
 }
 Flow测试()
 
@@ -100,8 +99,8 @@ function Fold测试() {
   var ff1 = Flow((a: number) => Flow((b: number) => a + b))
   var f3 = Fold(ff1, 0, [1, 2, 3])
 
-  console.log(eq(runFoldLeft(f1), 6))
-  console.log(eq(runFoldLeft(f2), 6))
-  console.log(eq(runFoldLeft(f3), 6))
+  断言相等(runFoldLeft(f1), 6)
+  断言相等(runFoldLeft(f2), 6)
+  断言相等(runFoldLeft(f3), 6)
 }
 Fold测试()
