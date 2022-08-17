@@ -11,7 +11,7 @@ import { IsSeq, toArray } from '../Class/Seq'
 export type Fold<A, B> = {
   [类型]: 'Fold'
   [构造子]: 'Fold'
-  [参数]: { f: (a: B) => (b: A) => B; defValue: B; arr: any }
+  [参数]: { f: any; defValue: B; arr: any }
 }
 
 // 构造子
@@ -22,7 +22,7 @@ export function Fold<
   AB = 取二阶类型参数2<BAB>,
   A = 取二阶类型参数1<AB>,
   B2 = 取二阶类型参数2<AB>,
-  _Check = Check<[Eq<B1, B2>, IsSeq<A_Seq>], BAB>,
+  _Check = Check<[Eq<B1, B2>, IsSeq<A_Seq>, IsMapFunc<BAB>, IsMapFunc<AB>], BAB>,
 >(f: BAB, defValue: B1, arr: A_Seq): Fold<A, B1> {
   return { [类型]: 'Fold', [构造子]: 'Fold', [参数]: { f: f as any, defValue, arr } }
 }
@@ -38,7 +38,7 @@ declare module '../Base/K2' {
 export function runFoldLeft<A, B>(a: Fold<A, B>): B {
   var s = a[参数].defValue
   for (var x of toArray(a[参数].arr)) {
-    s = a[参数].f(s)(x)
+    s = mapFunc(x, mapFunc(s, a[参数].f) as any)
   }
   return s
 }

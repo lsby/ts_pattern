@@ -97,7 +97,11 @@ function Fold测试() {
   var f1 = Fold((s: number) => (a: number) => s + a, 0, List([1, 2, 3]))
   var f2 = Fold((s: number) => (a: number) => s + a, 0, [1, 2, 3])
 
+  var ff1 = Flow((a: number) => Flow((b: number) => a + b))
+  var f3 = Fold(ff1, 0, [1, 2, 3])
+
   console.log(eq(runFoldLeft(f1), 6))
   console.log(eq(runFoldLeft(f2), 6))
+  console.log(eq(runFoldLeft(f3), 6))
 }
 Fold测试()
