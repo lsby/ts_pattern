@@ -25,7 +25,7 @@ export function 增加实现(f: (...args: any[]) => any) {
 
 export function apply<
   FAB,
-  FA extends FA_Check,
+  FA extends _Check,
   F1 = 取一阶类型构造子<FA>,
   F2 = 取一阶类型构造子<FAB>,
   AB = 取一阶类型参数1<FAB>,
@@ -33,7 +33,7 @@ export function apply<
   A2 = 取二阶类型参数1<取一阶类型参数1<FAB>>,
   B = 取二阶类型参数2<AB>,
   FB = 构造一阶类型<F1, B>,
-  FA_Check = Check<[Eq<F1, F2>, Eq<A1, A2>, IsApply<FA>, IsApply<FAB>], FA>,
+  _Check = Check<[Eq<F1, F2>, Eq<A1, A2>, IsApply<FA>, IsApply<FAB>], FA>,
 >(f: FAB, a: FA): FB {
   for (var 实现 of 实现们) {
     var r = 实现(...arguments)

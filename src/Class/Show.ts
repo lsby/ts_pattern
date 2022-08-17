@@ -20,7 +20,7 @@ export function 增加实现(f: (...args: any[]) => any) {
   实现们.push(f)
 }
 
-export function show<A extends A_Check, A_Check = Check<[IsShow<A>], A>>(a: A): string {
+export function show<A extends _Check, _Check = Check<[IsShow<A>], A>>(a: A): string {
   for (var 实现 of 实现们) {
     var r = 实现(...arguments)
     if (r != NEXT) return r

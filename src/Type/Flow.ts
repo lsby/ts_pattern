@@ -9,10 +9,10 @@ export type Flow<A, B> = { [类型]: 'Flow'; [构造子]: 'Flow'; [参数]: { va
 
 // 构造子
 export function Flow<
-  AB extends AB_Check,
+  AB extends _Check,
   A = 取二阶类型参数1<AB>,
   B = 取二阶类型参数2<AB>,
-  AB_Check = Check<[IsMapFunc<AB>], AB>,
+  _Check = Check<[IsMapFunc<AB>], AB>,
 >(a: AB): Flow<A, B> {
   return { [类型]: 'Flow' as 'Flow', [构造子]: 'Flow' as 'Flow', [参数]: { value: a } }
 }
@@ -27,10 +27,10 @@ declare module '../Base/K2' {
 // 函数
 export function addFlowNode<
   A,
-  BC extends BC_Check,
+  BC extends _Check,
   B = 取二阶类型参数1<BC>,
   C = 取二阶类型参数2<BC>,
-  BC_Check = Check<[IsMapFunc<BC>], BC>,
+  _Check = Check<[IsMapFunc<BC>], BC>,
 >(f: BC, a: Flow<A, B>): Flow<A, C> {
   return Flow((x: A) => mapFunc(mapFunc(x, a[参数].value), f as any))
 }

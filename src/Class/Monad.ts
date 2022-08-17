@@ -24,14 +24,14 @@ export function 增加实现(f: (...args: any[]) => any) {
 }
 
 export function bind<
-  MA extends MA_Check,
+  MA extends _Check,
   AMB,
   A1 = 取一阶类型参数1<MA>,
   A2 = 取二阶类型参数1<AMB>,
   MB = 取二阶类型参数2<AMB>,
   M1 = 取一阶类型构造子<MB>,
   M2 = 取一阶类型构造子<MA>,
-  MA_Check = Check<[Eq<A1, A2>, Eq<M1, M2>, IsMonad<MA>], MA>,
+  _Check = Check<[Eq<A1, A2>, Eq<M1, M2>, IsMonad<MA>], MA>,
 >(a: MA, f: AMB): MB {
   for (var 实现 of 实现们) {
     var r = 实现(...arguments)

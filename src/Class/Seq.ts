@@ -20,7 +20,7 @@ export function 增加实现(f: (...args: any[]) => any) {
   实现们.push(f)
 }
 
-export function toArray<A extends A_Check, A_Check = Check<[IsSeq<A>], A>>(a: A): A[] {
+export function toArray<A extends _Check, _Check = Check<[IsSeq<A>], A>>(a: A): A[] {
   for (var 实现 of 实现们) {
     var r = 实现(...arguments)
     if (r != NEXT) return r

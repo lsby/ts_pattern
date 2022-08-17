@@ -25,13 +25,13 @@ export function 增加实现(f: (...args: any[]) => any) {
 
 export function map<
   AB,
-  FA extends FA_Check,
+  FA extends _Check,
   F = 取一阶类型构造子<FA>,
   A1 = 取二阶类型参数1<AB>,
   A2 = 取一阶类型参数1<FA>,
   B = 取二阶类型参数2<AB>,
   FB = 构造一阶类型<F, B>,
-  FA_Check = Check<[Eq<A1, A2>, IsFunctor<FA>], FA>,
+  _Check = Check<[Eq<A1, A2>, IsFunctor<FA>], FA>,
 >(f: AB, a: FA): FB {
   for (var 实现 of 实现们) {
     var r = 实现(...arguments)
