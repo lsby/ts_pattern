@@ -1,7 +1,6 @@
 {
   "name": "@lsby/ts_struct",
-  "version": "0.0.1",
-  "description": "",
+  "version": "0.0.2",
   "main": "index.js",
   "scripts": {
     "watch:ts": "tsc -w",
@@ -15,5 +14,18 @@
   },
   "devDependencies": {
     "typescript": "^4.7.4"
-  }
+  },
+  "directories": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lsby/ts_struct.git"
+  },
+  "keywords": [],
+  "bugs": {
+    "url": "https://github.com/lsby/ts_struct/issues"
+  },
+  "homepage": "https://github.com/lsby/ts_struct#readme",
+  "description": ""
 }
