@@ -79,8 +79,14 @@ function Flow测试() {
     Flow((a: number) => a + 1),
     f1,
   )
+  var fx1 = Flow(f1)
+  var fx2 = addFlowNode(
+    Flow((a: number) => a + 1),
+    fx1,
+  )
 
   console.log(eq(runFlow(1, f2), 3))
   console.log(eq(runFlow(1, f3), 3))
+  console.log(eq(runFlow(1, fx2), 3))
 }
 Flow测试()

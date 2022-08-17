@@ -5,10 +5,15 @@ import * as MapFunc from '../Class/MapFunc'
 import { IsMapFunc, mapFunc } from '../Class/MapFunc'
 
 // 类型定义
-export type Flow<A, B> = { [类型]: 'Flow'; [构造子]: 'Flow'; [参数]: { value: (a: A) => B } }
+export type Flow<A, B> = { [类型]: 'Flow'; [构造子]: 'Flow'; [参数]: { value: any } }
 
 // 构造子
-export function Flow<A, B>(a: (a: A) => B): Flow<A, B> {
+export function Flow<
+  AB extends AB_Check,
+  A = 取二阶类型参数1<AB>,
+  B = 取二阶类型参数2<AB>,
+  AB_Check = Check<[IsMapFunc<AB>], AB>,
+>(a: AB): Flow<A, B> {
   return { [类型]: 'Flow', [构造子]: 'Flow', [参数]: { value: a } }
 }
 
@@ -27,10 +32,10 @@ export function addFlowNode<
   C = 取二阶类型参数2<BC>,
   BC_Check = Check<[IsMapFunc<BC>], BC>,
 >(f: BC, a: Flow<A, B>): Flow<A, C> {
-  return Flow((x) => mapFunc(a[参数].value(x), f as any))
+  return Flow((x: A) => mapFunc(mapFunc(x, a[参数].value), f as any))
 }
 export function runFlow<A, B>(x: A, a: Flow<A, B>): B {
-  return a[参数].value(x)
+  return mapFunc(x, a[参数].value)
 }
 
 // 实现类型类
