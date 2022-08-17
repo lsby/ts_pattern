@@ -6,6 +6,7 @@ import { bind } from '../src/Class/Monad'
 import { List, toArray } from '../src/Type/Array'
 import { Effect, runEffect } from '../src/Type/Effect'
 import { addFlowNode, Flow, runFlow } from '../src/Type/Flow'
+import { Fold, runFoldLeft } from '../src/Type/Fold'
 import { fromMaybe, Just, Maybe } from '../src/Type/Maybe'
 import '../src/TypeEx/Function'
 
@@ -90,3 +91,10 @@ function Flow测试() {
   console.log(eq(runFlow(1, fx2), 3))
 }
 Flow测试()
+
+function Fold测试() {
+  var f1 = Fold((a: number) => a + 1, 0, [1, 2, 3])
+
+  console.log(runFoldLeft(f1))
+}
+Fold测试()
