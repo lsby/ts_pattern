@@ -1,8 +1,12 @@
 import { Check } from '../Base/Check'
 import { 取二阶类型参数1, 取二阶类型参数2 } from '../Base/K2'
-import { 参数, 构造子, 类型 } from '../Base/Symbol'
 import * as MapFunc from '../Class/MapFunc'
 import { IsMapFunc, mapFunc } from '../Class/MapFunc'
+
+// 符号定义
+const 类型: unique symbol = Symbol('类型')
+const 构造子: unique symbol = Symbol('构造子')
+const 参数: unique symbol = Symbol('参数')
 
 // 类型定义
 export type Flow<A, B> = { [类型]: 'Flow'; [构造子]: 'Flow'; [参数]: { value: any } }

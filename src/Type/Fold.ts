@@ -2,10 +2,14 @@ import { Check } from '../Base/Check'
 import { Eq } from '../Base/Eq'
 import { 取二阶类型参数1, 取二阶类型参数2 } from '../Base/K2'
 import { 取三阶类型参数1, 取三阶类型参数2, 取三阶类型参数3 } from '../Base/K3'
-import { 参数, 构造子, 类型 } from '../Base/Symbol'
 import * as MapFunc from '../Class/MapFunc'
 import { IsMapFunc, mapFunc } from '../Class/MapFunc'
 import { IsSeq, toArray } from '../Class/Seq'
+
+// 符号定义
+const 类型: unique symbol = Symbol('类型')
+const 构造子: unique symbol = Symbol('构造子')
+const 参数: unique symbol = Symbol('参数')
 
 // 类型定义
 export type Fold<A, B> = {

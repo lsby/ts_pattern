@@ -1,8 +1,12 @@
-import { 参数, 构造子, 类型 } from '../Base/Symbol'
 import * as Functor from '../Class/Functor'
 import * as Apply from '../Class/Apply'
 import * as Monad from '../Class/Monad'
 import * as Show from '../Class/Show'
+
+// 符号定义
+const 类型: unique symbol = Symbol('类型')
+const 构造子: unique symbol = Symbol('构造子')
+const 参数: unique symbol = Symbol('参数')
 
 // 类型定义
 export type Maybe<A> =
