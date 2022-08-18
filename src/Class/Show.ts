@@ -4,7 +4,7 @@ import { Check } from '../Base/Check'
 export interface Show<A> {}
 
 type _IsShow<A, keys> = keys extends []
-  ? error<['Show:', '类型', A, '没有实现', 'Show']>
+  ? error<['Show:', '类型', A, '没有实现类型类', 'Show']>
   : keys extends [infer a, ...infer as]
   ? a extends keyof Show<A>
     ? Show<A>[a] extends true

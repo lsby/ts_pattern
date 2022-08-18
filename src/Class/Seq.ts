@@ -4,7 +4,7 @@ import { Check } from '../Base/Check'
 export interface Seq<A> {}
 
 type _IsSeq<A, keys> = keys extends []
-  ? error<['Seq:', '类型', A, '没有实现', 'Seq']>
+  ? error<['Seq:', '类型', A, '没有实现类型类', 'Seq']>
   : keys extends [infer a, ...infer as]
   ? a extends keyof Seq<A>
     ? Seq<A>[a] extends true

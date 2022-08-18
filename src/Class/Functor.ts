@@ -7,7 +7,7 @@ import { Eq } from '../Base/Eq'
 export interface Functor<A> {}
 
 type _IsFunctor<A, keys> = keys extends []
-  ? error<['Functor:', '类型', A, '没有实现', 'Functor']>
+  ? error<['Functor:', '类型', A, '没有实现类型类', 'Functor']>
   : keys extends [infer a, ...infer as]
   ? a extends keyof Functor<A>
     ? Functor<A>[a] extends true

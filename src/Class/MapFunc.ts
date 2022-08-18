@@ -4,7 +4,7 @@ import { Check } from '../Base/Check'
 export interface MapFunc<A> {}
 
 type _IsMapFunc<A, keys> = keys extends []
-  ? error<['MapFunc:', '类型', A, '没有实现', 'MapFunc']>
+  ? error<['MapFunc:', '类型', A, '没有实现类型类', 'MapFunc']>
   : keys extends [infer a, ...infer as]
   ? a extends keyof MapFunc<A>
     ? MapFunc<A>[a] extends true

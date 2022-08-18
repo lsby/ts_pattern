@@ -7,7 +7,7 @@ import { 取二阶类型参数1, 取二阶类型参数2 } from '../Base/K2'
 export interface Monad<A> {}
 
 type _IsMonad<A, keys> = keys extends []
-  ? error<['Monad:', '类型', A, '没有实现', 'Monad']>
+  ? error<['Monad:', '类型', A, '没有实现类型类', 'Monad']>
   : keys extends [infer a, ...infer as]
   ? a extends keyof Monad<A>
     ? Monad<A>[a] extends true

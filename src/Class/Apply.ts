@@ -7,7 +7,7 @@ import { 取二阶类型参数1, 取二阶类型参数2 } from '../Base/K2'
 export interface Apply<A> {}
 
 type _IsApply<A, keys> = keys extends []
-  ? error<['Apply:', '类型', A, '没有实现', 'Apply']>
+  ? error<['Apply:', '类型', A, '没有实现类型类', 'Apply']>
   : keys extends [infer a, ...infer as]
   ? a extends keyof Apply<A>
     ? Apply<A>[a] extends true
