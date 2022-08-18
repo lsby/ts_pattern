@@ -1,7 +1,7 @@
 import { Check } from '../Base/Check'
 import { 取二阶类型参数1, 取二阶类型参数2 } from '../Base/K2'
-import * as MapFunc from '../Class/MapFunc'
-import { IsMapFunc, mapFunc } from '../Class/MapFunc'
+import * as FuncLike from '../Class/FuncLike'
+import { IsFuncLike, call } from '../Class/FuncLike'
 
 // 符号定义
 const 类型: unique symbol = Symbol('类型')
@@ -16,7 +16,7 @@ export function Flow<
   AB extends _Check,
   A = 取二阶类型参数1<AB>,
   B = 取二阶类型参数2<AB>,
-  _Check = Check<[IsMapFunc<AB>], AB>,
+  _Check = Check<[IsFuncLike<AB>], AB>,
 >(a: AB): Flow<A, B> {
   return { [类型]: 'Flow' as 'Flow', [构造子]: 'Flow' as 'Flow', [参数]: { value: a } }
 }
@@ -34,22 +34,22 @@ export function addFlowNode<
   BC extends _Check,
   B = 取二阶类型参数1<BC>,
   C = 取二阶类型参数2<BC>,
-  _Check = Check<[IsMapFunc<BC>], BC>,
+  _Check = Check<[IsFuncLike<BC>], BC>,
 >(f: BC, a: Flow<A, B>): Flow<A, C> {
-  return Flow((x: A) => mapFunc(mapFunc(x, a[参数].value), f as any))
+  return Flow((x: A) => call(call(x, a[参数].value), f as any))
 }
 export function runFlow<A, B>(x: A, a: Flow<A, B>): B {
-  return mapFunc(x, a[参数].value)
+  return call(x, a[参数].value)
 }
 
 // 实现类型类
-// MapFunc
-declare module '../Class/MapFunc' {
-  interface MapFunc<A> {
+// FuncLike
+declare module '../Class/FuncLike' {
+  interface FuncLike<A> {
     Flow的实现: typeof 类型 extends keyof A ? (A[typeof 类型] extends 'Flow' ? true : false) : false
   }
 }
-MapFunc.增加实现(function <A, B>(x: A, a: Flow<A, B>): B {
-  if (a[类型] != 'Flow') return MapFunc.NEXT
+FuncLike.增加实现(function <A, B>(x: A, a: Flow<A, B>): B {
+  if (a[类型] != 'Flow') return FuncLike.NEXT
   return runFlow(x, a)
 })

@@ -1,6 +1,6 @@
 {
   "name": "@lsby/ts_pattern",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "main": "index.js",
   "scripts": {
     "watch:ts": "tsc -w",

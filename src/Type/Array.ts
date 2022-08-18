@@ -2,7 +2,7 @@ import * as Functor from '../Class/Functor'
 import * as Apply from '../Class/Apply'
 import * as Monad from '../Class/Monad'
 import * as Show from '../Class/Show'
-import * as Seq from '../Class/Seq'
+import * as ArrayLike from '../Class/ArrayLike'
 
 // 符号定义
 const 类型: unique symbol = Symbol('类型')
@@ -89,13 +89,13 @@ Show.增加实现(function <A>(a: List<A>): string {
   return JSON.stringify(a[参数].value)
 })
 
-// Seq
-declare module '../Class/Seq' {
-  interface Seq<A> {
+// ArrayLike
+declare module '../Class/ArrayLike' {
+  interface ArrayLike<A> {
     List的实现: typeof 类型 extends keyof A ? (A[typeof 类型] extends 'List' ? true : false) : false
   }
 }
-Seq.增加实现(function <A>(a: List<A>): Array<A> {
-  if (a[类型] != 'List') return Seq.NEXT
+ArrayLike.增加实现(function <A>(a: List<A>): Array<A> {
+  if (a[类型] != 'List') return ArrayLike.NEXT
   return toArray(a)
 })
