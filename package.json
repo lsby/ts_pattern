@@ -1,6 +1,6 @@
 {
   "name": "@lsby/ts_pattern",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "main": "index.js",
   "scripts": {
     "watch:ts": "tsc -w",
@@ -20,12 +20,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/lsby/ts_struct.git"
+    "url": "git+https://github.com/lsby/ts_pattern.git"
   },
   "keywords": [],
   "bugs": {
-    "url": "https://github.com/lsby/ts_struct/issues"
+    "url": "https://github.com/lsby/ts_pattern/issues"
   },
-  "homepage": "https://github.com/lsby/ts_struct#readme",
+  "homepage": "https://github.com/lsby/ts_pattern#readme",
   "description": ""
 }
