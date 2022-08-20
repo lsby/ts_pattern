@@ -1,6 +1,6 @@
 {
   "name": "@lsby/ts_pattern",
-  "version": "0.0.12",
+  "version": "0.0.13",
   "main": "dist/src/index.js",
   "scripts": {
     "build": "rm -rf dist && tsc",
