@@ -1,12 +1,12 @@
 {
   "name": "@lsby/ts_pattern",
-  "version": "0.0.10",
+  "version": "0.0.12",
   "main": "dist/src/index.js",
   "scripts": {
-    "build:ts": "tsc",
+    "build": "rm -rf dist && tsc",
     "watch:ts": "tsc -w",
-    "test": "node dist/test/index.js",
-    "prepublish": "npm run build:ts",
+    "test": "npm i && npm run build && node dist/test/index.js",
+    "prepub": "npm i && npm run build",
     "pub": "npm publish --access=public"
   },
   "author": "",
