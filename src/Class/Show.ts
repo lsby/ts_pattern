@@ -1,3 +1,7 @@
+/**
+ * 描述一种抽象, 这种抽象可以被转换为字符串.
+ */
+
 import { error, 联合转元组 } from '@lsby/ts_type_fun'
 import { Check } from '../Base/Check'
 

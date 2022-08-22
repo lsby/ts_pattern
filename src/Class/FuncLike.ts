@@ -1,5 +1,6 @@
-// 描述一种抽象, 这种抽象可以输入一个值, 然后得到另一个值.
-// 最常见的实例是函数.
+/**
+ * 描述一种抽象, 这种抽象类似于函数, 输入一个A类型的值, 返回一个B类型的值.
+ */
 
 import { error, 联合转元组 } from '@lsby/ts_type_fun'
 import { Check } from '../Base/Check'

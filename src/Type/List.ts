@@ -1,3 +1,9 @@
+/**
+ * 描述一个列表
+ * 需要传入以下数据来创建:
+ * - js一个原生数组
+ */
+
 import * as Functor from '../Class/Functor'
 import * as Apply from '../Class/Apply'
 import * as Monad from '../Class/Monad'

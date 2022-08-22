@@ -1,10 +1,18 @@
+/**
+ * 描述一个折叠结构
+ * 即通过给定函数将一个可迭代的组转换为一个值
+ * 一个例子是js数组的reduce
+ * 需要传入以下数据来创建:
+ * - 函数
+ * - 初始值
+ * - 可迭代组
+ */
+
 import { Check } from '../Base/Check'
 import { Eq } from '../Base/Eq'
 import { 取二阶类型参数1, 取二阶类型参数2 } from '../Base/K2'
-import { 取三阶类型参数1, 取三阶类型参数2, 取三阶类型参数3 } from '../Base/K3'
-import * as FuncLike from '../Class/FuncLike'
-import { IsFuncLike, call } from '../Class/FuncLike'
 import { IsArrayLike, toArray } from '../Class/ArrayLike'
+import { call, IsFuncLike } from '../Class/FuncLike'
 
 // 符号定义
 const 类型: unique symbol = Symbol('类型')

@@ -13,7 +13,7 @@ export * as Functor from './Class/Functor'
 export * as Monad from './Class/Monad'
 export * as Show from './Class/Show'
 
-export * from './Type/Array'
+export * from './Type/List'
 export * from './Type/Effect'
 export * from './Type/Flow'
 export * from './Type/Fold'

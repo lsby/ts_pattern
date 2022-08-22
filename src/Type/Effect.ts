@@ -1,3 +1,9 @@
+/**
+ * 描述一个副作用
+ * 需要传入以下数据来创建:
+ * - 函数: () => A
+ */
+
 import * as Functor from '../Class/Functor'
 import * as Apply from '../Class/Apply'
 import * as Monad from '../Class/Monad'

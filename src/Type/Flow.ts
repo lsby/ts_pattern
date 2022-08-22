@@ -1,3 +1,12 @@
+/**
+ * 描述一个线性流
+ * 由很多节点组成, 最后形成一个流.
+ * 对这个流输入一个值, 这个值会依次流经所有节点, 最终取得结果.
+ * 需要传入以下数据来创建:
+ * - 函数: FuncLike<A,B>
+ * 可以通过addFlowNode增加新的节点
+ */
+
 import { Check } from '../Base/Check'
 import { 取二阶类型参数1, 取二阶类型参数2 } from '../Base/K2'
 import * as FuncLike from '../Class/FuncLike'
